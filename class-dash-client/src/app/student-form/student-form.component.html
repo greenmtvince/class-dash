@@ -1,0 +1,33 @@
+
+<table class="table" style="width: 80%;">
+    <colgroup>
+        <col style="width:  5%;">
+        <col style="width: 10%;">
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+        <col style="width: 10%;">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Photo</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Birth Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>--</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" style="max-width: 150px; max-height: 100px;"></td>
+            <td><input type="text" name="last_name"  style="width:80%;" [(ngModel)]="newStudent.last_name"></td>
+            <td><input type="text" name="first_name" style="width:80%;"  [(ngModel)]="newStudent.first_name"></td>
+            <td><input type="text" name="birthdate"  style="width:80%;" [(ngModel)]="newStudent.birthdate"></td>
+            <td>
+                <button class="button is-primary" (click)="addStudent()">Save</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

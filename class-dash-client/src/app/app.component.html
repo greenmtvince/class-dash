@@ -1,0 +1,22 @@
+<div style="text-align:center">
+  <section class="section">
+      <div class="container">
+          <div class="row">
+            <div class="content has-text-left">
+              <h1>Welcome to ClassDash</h1>
+            </div>
+            <hr/>
+          </div>
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="navbar-menu is-active buttons">
+                  <button class="button is-link" [routerLink]="['']">Home</button>
+                  <fieldset disabled style="margin-right: 10px;"><button class="button is-link">Assignments</button></fieldset> 
+                  <button class="button is-link" [routerLink]="['/students']">Students</button>
+              </div>
+          </nav>
+          <hr/>
+          <router-outlet></router-outlet>
+          <hr/>
+      </div>
+  </section>
+</div>

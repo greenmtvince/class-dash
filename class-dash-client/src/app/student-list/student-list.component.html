@@ -1,0 +1,48 @@
+<div>
+    <span class="help is-info"  *ngIf="isLoading">Loading...</span>
+    <div *ngIf="!isLoading">
+        <div style="text-align: left;">
+            <form>
+                <button class="button is-primary" *ngIf="!isAddNew" (click)="isAddNew=true">Add Student</button>
+                <button class="button is-primary" *ngIf="isAddNew"  (click)="isAddNew=false">Cancel</button>
+            </form>
+        </div>
+        <app-student-form *ngIf="isAddNew" (studentAdded)="appendStudent($event)" ></app-student-form>  
+        <table class="table" *ngIf="!isAddNew" style="width: 80%;" >
+            <colgroup>
+                <col style="width:  5%;">
+                <col style="width: 10%;">
+                <col style="width: 25%;">
+                <col style="width: 25%;">
+                <col style="width: 25%;">
+                <col style="width: 10%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Photo</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Birth Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>  
+                <tr *ngFor="let student of students">
+                    <td>{{ student.id }}</td>
+                    <td><img src={{student.photo_url}} style="max-width: 150px; max-height: 100px;"></td>
+                    <td><span *ngIf="!student.enableEdit">{{ student.last_name }}</span><input type="text" name="last_name" [value]="student.last_name" [(ngModel)]="student.last_name" *ngIf="student.enableEdit"></td>
+                    <td><span *ngIf="!student.enableEdit">{{ student.first_name }}</span><input type="text" name="first_name" [value]="student.first_name" [(ngModel)]="student.first_name"*ngIf="student.enableEdit"></td>
+                    <td><span *ngIf="!student.enableEdit">{{ student.birthdate }}</span><input type="text" name="birthdate" [value]="student.birthdate" [(ngModel)]="student.birthdate" *ngIf="student.enableEdit"></td>
+                    <td>
+                        <form>
+                            <button class="button is-primary" *ngIf="!student.enableEdit" (click)="student.enableEdit=true">Edit</button>
+                            <button class="button is-primary" *ngIf="student.enableEdit" (click)="editStudent(student)">Save</button>
+                            <button class="button is-primary" *ngIf="student.enableEdit" (click)="student.enableEdit=false">Cancel</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
